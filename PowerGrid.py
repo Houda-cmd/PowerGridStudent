@@ -12,6 +12,8 @@ if __name__ == "__main__":
     terrain.charger("terrains/t1.txt")
     print("Terrain chargé :")
     terrain.afficher()
+    
+    print("coucou")
 
     print("======= Configuration Automatique")
     reseau.configurer(terrain)
