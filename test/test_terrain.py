@@ -1,14 +1,23 @@
 
 import unittest
 import xmlrunner
-
 from Terrain import Terrain, Case
 
 class TestTerrain(unittest.TestCase):
+ def test_chargement(self):
 
-    def test_chargement(self):
-        # TODO
-        self.fail()
+    fichier_test = "terrains/t1.txt"
+
+    terrain = Terrain()
+
+    terrain.charger(fichier_test)
+
+    self.assertEqual(terrain.cases[0][0], Case.VIDE, "La case (1,1) devrait être VIDE.")
+    self.assertEqual(terrain.cases[2][10], Case.CLIENT, "La case (2,10) devrait être CLIENT.")
+    self.assertEqual(terrain.cases[9][17], Case.ENTREE, "La case (9,18) devrait être ENTREE.")
+
+
+
 
     def test_accesseur(self):
         t = Terrain()
