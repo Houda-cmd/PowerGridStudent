@@ -36,10 +36,16 @@ class Reseau:
     def valider_reseau(self) -> bool:
         # TODO
         return False
-
+    
     def valider_distribution(self, t: Terrain) -> bool:
-        # TODO
-        return False
+        # Récupérer les coordonnées de tous les clients
+        clients = t.get_clients()
+        # Vérifier que chaque client est couvert par un nœud
+        for client in clients:
+            if client not in self.noeuds.values():
+                return False
+        return True
+
 
     def configurer(self, t: Terrain):
         self.noeud_entree, self.noeuds, self.arcs  = self.strat.configurer(t)
