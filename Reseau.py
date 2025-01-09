@@ -34,12 +34,31 @@ class Reseau:
         self.strat = strat
 
     def valider_reseau(self) -> bool:
-        # TODO
-        return False
+    # Vérifier qu'un nœud d'entrée est défini
+        if self.noeud_entree == -1:
+            print("Aucune entrée définie.")
+            return False
+
+    # Vérifier que tous les arcs connectent des nœuds valides
+        for n1, n2 in self.arcs:
+            if n1 not in self.noeuds or n2 not in self.noeuds:
+                print(f"Arc invalide entre {n1} et {n2}.")
+                return False
+
+        return True
+
 
     def valider_distribution(self, t: Terrain) -> bool:
-        # TODO
-        return False
+    # Vérifier que chaque client est connecté au réseau
+        clients = t.get_clients()
+
+        for client in clients:
+            if client not in self.noeuds.values():
+                print(f"Client non desservi : {client}")
+                return False
+
+        return True
+
 
     def configurer(self, t: Terrain):
         self.noeud_entree, self.noeuds, self.arcs  = self.strat.configurer(t)

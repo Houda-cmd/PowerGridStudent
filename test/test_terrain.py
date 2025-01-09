@@ -19,7 +19,7 @@ class TestTerrain(unittest.TestCase):
 
 
 
-    def test_accesseur(self):
+def test_accesseur(self):
         t = Terrain()
         t.cases = [
                 [Case.ENTREE, Case.VIDE, Case.VIDE],
